@@ -19,6 +19,9 @@ class TCPReceiver {
 
     //! The maximum number of bytes we'll store.
     size_t _capacity;
+    size_t _isn;
+    bool _syn = false;
+    bool _fin = false;
 
   public:
     //! \brief Construct a TCP receiver
