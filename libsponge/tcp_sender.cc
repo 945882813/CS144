@@ -114,8 +114,8 @@ void TCPSender::tick(const size_t ms_since_last_tick) {
     _time_elapsed += ms_since_last_tick;
     if (_time_elapsed >= _RTO && !_segments_outstanding.empty()) {
         _segments_out.push(_segments_outstanding.front());
+        _consecutive_retransmission++;
         if (_receiver_windows_size) {
-            _consecutive_retransmission++;
             _RTO <<= 1;
         }
         _time_elapsed = 0;
